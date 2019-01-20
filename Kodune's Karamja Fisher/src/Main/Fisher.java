@@ -99,22 +99,31 @@ public class Fisher extends AbstractScript implements MessageListener {
 
     }
 
-    public void onPaint(Graphics g)
+    public void onPaint(Graphics gg)
     {
-        g.setColor(Color.RED);
-        g.setFont(new Font("TimesRoman", 0, 17));
-        g.drawString("Time Running: " + t.formatTime(), 10, 120);
-        g.drawString("Status: " + status, 10, 140);
-        g.drawString("Fish catch: " + FISH_CATCH, 10, 160);
-        g.drawString("Fishing level: " + getSkillTracker().getStartLevel(Skill.FISHING), 10, 180);
-        g.drawString("Levels gained: " + LEVELS_GAINED, 10, 200);
-        //g.drawString("Fishing begin level: " + fishBeginLevel + " ( " + fishGainedLevel + " )",10,160);
-        g.drawString("Fishing XP/H: " + getSkillTracker().getGainedExperiencePerHour(Skill.FISHING),10,220);
+        Color color1 = new Color(0, 255, 0);
+        Color color2 = new Color(0, 0, 0);
 
-        //int fishBeginLevel =  getSkillTracker().getStartLevel(Skill.FISHING);
-        //int fishGainedLevel = getSkillTracker().getGainedLevels(Skill.FISHING);
-        int fishXpHour = getSkillTracker().getGainedExperiencePerHour(Skill.FISHING);
+        BasicStroke stroke1 = new BasicStroke(1);
 
+        Font font1 = new Font("TimesRoman", 2, 13);
+        Font font2 = new Font("TimesRoman", 0, 12);
+
+        Graphics2D g = (Graphics2D)gg;
+        g.setColor(color1);
+        g.fillRoundRect(5, 5, 160, 145, 16, 16);
+        g.setColor(color2);
+        g.setStroke(stroke1);
+        g.drawRoundRect(5, 5, 160, 145, 16, 16);
+        g.setFont(font1);
+        g.drawString("Kodune's Karamja Fisher", 15, 20);
+        g.setFont(font2);
+        g.drawString("Time Running: " + t.formatTime(), 9, 50);
+        g.drawString("Fish catch: " + FISH_CATCH, 9, 65);
+        g.drawString("Fishing level: " + getSkillTracker().getStartLevel(Skill.FISHING), 9, 80);
+        g.drawString("Levels gained: " + LEVELS_GAINED, 9, 95);
+        g.drawString("Fishing XP/H: " + getSkillTracker().getGainedExperiencePerHour(Skill.FISHING), 9, 110);
+        g.drawString("Status: " + status, 9, 130);
 
     }
 
